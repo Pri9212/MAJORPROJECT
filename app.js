@@ -5,11 +5,17 @@ const Listing = require("./modles/listing.js");
 const path =require("path");
 const { escape } = require("querystring");
 const methodOverride=require("method-override");
-app.use(express.urlencoded({extended:true}));
+const ejsmate=require("ejs-mate");
 
+
+
+
+app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname,"public")));
 app.use(methodOverride("_method"));
 app.set("views",path.join(__dirname,"views"));
 app.set("view enjine","ejs");
+app.engine("ejs",ejsmate);
 main().then(()=>{
     console.log("connection successful")})
 
