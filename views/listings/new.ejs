@@ -3,19 +3,19 @@
     <div class="row mt-3">
     <div class="col-8 offset-2">
     <h3>CREATE a New Listing</h3>
-    <form method="POST" action="/listings">
+    <form method="POST" action="/listings" novalidate class="needs-validation" >
     
 
     <div class="mb-3">
     <label for="title" class="form-label">Title</label>
     <input placeholder="Add a catchy title"
-     name="listing[title]" type="text" class="form-control">
-    
+     name="listing[title]" type="text" class="form-control" required>
+    <div class="valid-feedback">title looks good!</div>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-<textarea name="listing[description]" class="form-control">Enter description</textarea>
-    
+<textarea name="listing[description]" class="form-control" required></textarea>
+    <div class="invalid-feedback">please enter short description</div>
     </div>
    <div class="mb-3">
     <label for="image" class="form-label">Image_Url</label>
@@ -24,14 +24,14 @@
    </div>
     <div class="row">
 <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-<input placeholder="1200" name="listing[price]" type="number" class="form-control">
-    
+        <label for="price" class="form-label" >Price</label>
+<input placeholder="1200" name="listing[price]"  class="form-control" required>
+    <div class="invalid-feedback">Please enter price!</div>
     </div>
     <div class="mb-3 col-md-8">
       <label for="country" class="form-label">Country</label>
-      <input placeholder="India" name="listing[country]" type="text" class="form-control">
-   
+      <input placeholder="India" name="listing[country]" type="text" class="form-control" required>
+   <div class="invalid-feedback"> please enter countryname!</div>
 </div>
 
 
@@ -40,8 +40,8 @@
     
     <div class="mb-3">
       <label for="location" class="form-label">location</label>
-<input placeholder="Lucknow UP" name="listing[location]" type="text" class="form-control">
-    
+<input placeholder="Lucknow UP" name="listing[location]" type="text" class="form-control" required>
+    <div class="invalid-feedback">Enter Location Please!</div>
     </div>
 
 <br/> <br/>

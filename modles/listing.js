@@ -10,11 +10,11 @@ const Listschema=new mongoose.Schema({
         required:true,
     },
     image:{
-        filename:String,
-        url:String,
-        // type:String,
-        // default:"https://unsplash.com/photos/a-house-with-a-blue-front-door-and-a-brown-front-door-xaqsFfoEq3o",
-        // set:(v)=>v===""?"https://unsplash.com/photos/a-house-with-a-blue-front-door-and-a-brown-front-door-xaqsFfoEq3o":v,
+        
+        
+        type:String,
+       default:"https://unsplash.com/photos/a-house-with-a-blue-front-door-and-a-brown-front-door-xaqsFfoEq3o",
+       set:(v)=>v===""?"https://unsplash.com/photos/a-house-with-a-blue-front-door-and-a-brown-front-door-xaqsFfoEq3o":v,
     },
     price:Number,
     location:String,

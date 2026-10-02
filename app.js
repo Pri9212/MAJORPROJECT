@@ -6,7 +6,7 @@ const path =require("path");
 const { escape } = require("querystring");
 const methodOverride=require("method-override");
 const ejsmate=require("ejs-mate");
-
+const wrapAsync=require("./utils/wrapAsync.js")
 
 
 
@@ -46,11 +46,17 @@ app.get("/listings/:id", async(req,res)=>{
    res.render("listings/show.ejs",{listing})
 });
 //create route
-app.post("/listings",async(req,res)=>{
-    const newlisting= new Listing(req.body.listing);
+app.post("/listings",
+    wrapAsync(async(req,res)=>{
+    
+const newlisting= new Listing(req.body.listing);
    await newlisting.save();
    res.redirect("/listings");
-});
+    
+    
+
+      
+}));
 //EDIT Route
 app.get("/listings/:id/edit", async (req,res)=>{
 let{id}=req.params;
@@ -74,7 +80,9 @@ res.redirect("/listings");
 app.get("/",(req,res)=>{
     res.send("its working");
 });
-
+app.use((err,req,res,next)=>{
+    res.send("Something Went Wrong!");
+});
 app.listen(8080,()=>{
     console.log("app is listening at port 8080");
 });
